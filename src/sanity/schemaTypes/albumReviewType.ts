@@ -59,6 +59,11 @@ export const albumReviewType = defineType({
                 {title: 'Classic Rock', value: 'classic-rock'},
                 {title: 'Hip Hop', value: 'hip-hop'},
                 {title: 'Electronic', value: 'electronic'},
+                {title: 'Folk Rock', value: 'folk-rock'},
+                {title: 'Grunge', value: 'grunge'},
+                {title: 'Pop', value: 'pop'},
+                {title: 'Hardcore', value: 'hardcore'},
+                {title: 'Metal', value: 'metal'},
             ]
         }
     }),
