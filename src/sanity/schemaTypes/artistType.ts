@@ -19,6 +19,10 @@ export const artistType = defineType({
       },
     }),
     defineField({
+        name: 'origin',
+        type: 'string',
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       options: {
@@ -41,6 +45,11 @@ export const artistType = defineType({
     select: {
       title: 'name',
       media: 'image',
+      origin: 'origin'
     },
+    prepare(selection) {
+        const {origin} = selection
+        return {...selection, subtitle: origin}
+    }
   },
 })

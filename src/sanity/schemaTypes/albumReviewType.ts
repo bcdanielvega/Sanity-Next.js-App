@@ -1,11 +1,11 @@
-import {DocumentTextIcon} from '@sanity/icons'
+import {SparklesIcon} from '@sanity/icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const albumReviewType = defineType({
   name: 'albumReview',
   title: 'Album Review',
   type: 'document',
-  icon: DocumentTextIcon,
+  icon: SparklesIcon,
   fields: [
     defineField({
       name: 'title',
@@ -23,6 +23,11 @@ export const albumReviewType = defineType({
       type: 'reference',
       to: {type: 'author'},
     }),
+    defineField({
+        name: 'artist',
+        type: 'reference',
+        to: {type: 'artist'},
+      }),
     defineField({
       name: 'mainImage',
       type: 'image',
@@ -52,7 +57,7 @@ export const albumReviewType = defineType({
         options: {
             list: [
                 {title: 'Jazz', value: 'jazz'},
-                {title: 'Post Rock', value: 'post-rock'},
+                {title: 'Post-Rock', value: 'post-rock'},
                 {title: 'Punk Rock', value: 'punk-rock'},
                 {title: 'Pop Punk', value: 'pop-punk'},
                 {title: 'Alternative Rock', value: 'alternative-rock'},
@@ -64,6 +69,8 @@ export const albumReviewType = defineType({
                 {title: 'Pop', value: 'pop'},
                 {title: 'Hardcore', value: 'hardcore'},
                 {title: 'Metal', value: 'metal'},
+                {title: 'Country', value: 'country'},
+                {title: 'Post-Punk', value: 'post-punk'},
             ]
         }
     }),
