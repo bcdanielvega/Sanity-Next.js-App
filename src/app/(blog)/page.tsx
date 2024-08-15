@@ -8,5 +8,12 @@ export default async function Page() {
     query: ALBUMREVIEWS_QUERY,
   });
 
-  return <AlbumReviews albumReviews={albumReviews} />;
+  return <>
+  <div className={`container mx-auto prose prose-lg p-4 flex items-center justify-center quicksand`}>
+    <h1>
+      Important Albums
+    </h1>
+  </div>
+    <AlbumReviews albumReviews={albumReviews} />;
+  </>
 }

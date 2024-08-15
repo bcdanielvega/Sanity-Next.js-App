@@ -71,6 +71,7 @@ export const albumReviewType = defineType({
                 {title: 'Metal', value: 'metal'},
                 {title: 'Country', value: 'country'},
                 {title: 'Post-Punk', value: 'post-punk'},
+                {title: 'Indie Rock', value: 'indie-rock'},
             ]
         }
     }),

@@ -351,6 +351,7 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Variable: ALBUMREVIEWS_QUERY
 // Query: *[_type == "albumReview" && defined(slug.current)][0...12]{  _id, title, slug}
 export type ALBUMREVIEWS_QUERYResult = Array<{
+  mainImage: any;
   _id: string;
   title: string | null;
   slug: Slug | null;
