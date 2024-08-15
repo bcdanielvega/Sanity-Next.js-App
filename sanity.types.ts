@@ -355,6 +355,7 @@ export type ALBUMREVIEWS_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
+  artist: any;
 }>;
 // Variable: ALBUMREVIEW_QUERY
 // Query: *[_type == "albumReview" && slug.current == $slug][0]{  title, body, mainImage}

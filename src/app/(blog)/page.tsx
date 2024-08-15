@@ -9,9 +9,9 @@ export default async function Page() {
   });
 
   return <>
-  <div className={`container mx-auto prose prose-lg p-4 flex items-center justify-center quicksand`}>
-    <h1>
-      Important Albums
+  <div className={`container mx-auto prose prose-lg p-4 flex items-center justify-center quicksand bg-mintcream`}>
+    <h1 className="text-center uppercase">
+      Albums That I Think You Should Listen To
     </h1>
   </div>
     <AlbumReviews albumReviews={albumReviews} />;

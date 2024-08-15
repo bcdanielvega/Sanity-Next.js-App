@@ -85,10 +85,11 @@ export const albumReviewType = defineType({
       title: 'title',
       author: 'author.name',
       media: 'mainImage',
+      artist: 'artist.name'
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      const {artist} = selection
+      return {...selection, subtitle: artist && `by ${artist}`}
     },
   },
 })
