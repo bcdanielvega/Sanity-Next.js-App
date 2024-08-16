@@ -10,4 +10,4 @@ export const ALBUMREVIEW_QUERY = groq`*[_type == "albumReview" && slug.current =
 
 export const ARTISTS_QUERY = groq`*[_type == "artist"] {_id, name, slug, image}`;
 
-export const ARTIST_QUERY = groq`*[_type == "artist" && slug.current == $slug] {name, bio, image}`;
+export const ARTIST_QUERY = groq`*[_type == "artist" && slug.current == $slug][0] {name, bio, image}`;

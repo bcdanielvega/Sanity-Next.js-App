@@ -482,8 +482,8 @@ export type ARTISTS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: ARTIST_QUERY
-// Query: *[_type == "artist" && slug.current == $slug] {name, bio, image}
-export type ARTIST_QUERYResult = Array<{
+// Query: *[_type == "artist" && slug.current == $slug][0] {name, bio, image}
+export type ARTIST_QUERYResult = {
   name: string | null;
   bio: Array<{
     children?: Array<{
@@ -514,5 +514,5 @@ export type ARTIST_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-}>;
+} | null;
 
