@@ -82,6 +82,12 @@ export type AlbumReview = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "author";
   };
+  artist?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "artist";
+  };
   mainImage?: {
     asset?: {
       _ref: string;
@@ -102,7 +108,7 @@ export type AlbumReview = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   publishedAt?: string;
-  genre?: "jazz" | "post-rock" | "punk-rock" | "pop-punk" | "alternative-rock" | "classic-rock" | "hip-hop" | "electronic" | "folk-rock" | "grunge" | "pop" | "hardcore" | "metal";
+  genre?: "jazz" | "post-rock" | "punk-rock" | "pop-punk" | "alternative-rock" | "classic-rock" | "hip-hop" | "electronic" | "folk-rock" | "grunge" | "pop" | "hardcore" | "metal" | "country" | "post-punk" | "indie-rock";
   body?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -131,6 +137,46 @@ export type AlbumReview = {
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
+    _key: string;
+  }>;
+};
+
+export type Artist = {
+  _id: string;
+  _type: "artist";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  origin?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  bio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
     _key: string;
   }>;
 };
@@ -345,17 +391,30 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | AlbumReview | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | AlbumReview | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: ALBUMREVIEWS_QUERY
-// Query: *[_type == "albumReview" && defined(slug.current)][0...12]{  _id, title, slug}
+// Query: *[_type == "albumReview" && defined(slug.current)] | order(_id desc) {  _id, title, slug, mainImage, artist->{name}}
 export type ALBUMREVIEWS_QUERYResult = Array<{
-  mainImage: any;
   _id: string;
   title: string | null;
   slug: Slug | null;
-  artist: any;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  artist: {
+    name: string | null;
+  } | null;
 }>;
 // Variable: ALBUMREVIEW_QUERY
 // Query: *[_type == "albumReview" && slug.current == $slug][0]{  title, body, mainImage}
@@ -404,3 +463,56 @@ export type ALBUMREVIEW_QUERYResult = {
     _type: "image";
   } | null;
 } | null;
+// Variable: ARTISTS_QUERY
+// Query: *[_type == "artist"] {_id, name, slug, image}
+export type ARTISTS_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+// Variable: ARTIST_QUERY
+// Query: *[_type == "artist" && slug.current == $slug] {name, bio, image}
+export type ARTIST_QUERYResult = Array<{
+  name: string | null;
+  bio: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+

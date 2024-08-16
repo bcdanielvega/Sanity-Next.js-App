@@ -4,8 +4,10 @@ import { urlFor } from "@/sanity/lib/image";
 
 
 export function AlbumReviews({albumReviews}: {albumReviews: ALBUMREVIEWS_QUERYResult}) {
+    // Randomize the order for the albums 
     albumReviews = albumReviews.sort((a, b) => 0.5 - Math.random());   
-    console.log(albumReviews);
+
+    // How would I add state to this? 
     
     return (
         <ul className="container mx-auto grid grid-cols-4 divide-blue-100">
