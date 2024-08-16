@@ -6,6 +6,7 @@ import { client, sanityFetch } from "@/sanity/lib/client";
 import { ARTIST_QUERYResult, ARTISTS_QUERYResult } from "../../../../../sanity.types";
 
 import { Artist } from "@/components/Artist"
+import Header from "@/components/Header";
 
 export async function generateStaticParams() {
     const artists = await client.fetch<ARTISTS_QUERYResult>(
@@ -28,5 +29,8 @@ export default async function Page({ params}: { params: QueryParams}) {
         return notFound();
     }
 
-    return <Artist artist={artist} />;
+    return <>
+        <Header />
+        <Artist artist={artist} />;
+    </>
 }

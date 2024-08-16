@@ -8,6 +8,7 @@ import {
   ALBUMREVIEWS_QUERYResult,
 } from "../../../../../sanity.types";
 import { Review } from "@/components/Review";
+import Header from "@/components/Header";
 
 export async function generateStaticParams() {
   const albumReviews = await client.fetch<ALBUMREVIEWS_QUERYResult>(
@@ -29,5 +30,8 @@ export default async function Page({ params }: { params: QueryParams }) {
   if (!albumReview) {
     return notFound();
   }
-  return <Review review={albumReview} />;
+  return <>
+  <Header />
+  <Review review={albumReview} />;
+  </>
 }
