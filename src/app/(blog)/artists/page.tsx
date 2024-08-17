@@ -15,6 +15,9 @@ export default async function Page() {
 
   return <>
   <Header />
+  <div className="container mx-auto mt-10 prose prose-xl p-f flex items-center justify-center quicksand bg-mintcream">
+    <h1 className="text-center uppercase">ARTISTS</h1>
+  </div>
     <div className="container mx-auto prose prose-lg p-4 flex items-center justify-center quicksand bg-mintcream">
       <h2 className="text-center uppercase"> Artists that I think you should listen to</h2>
     </div>

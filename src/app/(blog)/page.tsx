@@ -19,8 +19,9 @@ export default async function Page() {
 
   return <>
   <Header />
-  <div className="container mx-auto mt-10 prose prose-xl p-f flex items-center justify-center quicksand bg-mintcream">
-    <h1 className="text-center uppercase">Music for Miles</h1>
+  <div className="container mx-auto mt-10 prose prose-xl p-f flex items-center justify-center quicksand bg-mintcream flex-col mb-0">
+    <h1 className="text-center uppercase mb-5">Music for my son</h1>
+    <div className="text-center">MILESTONES is a collection of albums and artists that I want to show my son Miles. These are albums that have shaped my life in some form or fashion.</div>
   </div>
   <div className={`container mx-auto prose prose-lg p-4 flex items-center justify-center quicksand bg-mintcream`}>
     <h2 className="text-center uppercase">

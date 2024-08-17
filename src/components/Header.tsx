@@ -1,12 +1,19 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   return (
     <header className={`quicksand ${styles.header}`}>
       <div className={styles.logo}>
         <Link href="/">
-          Milestones
+          <Image 
+          src="/MILESTONES4.png"
+          width={300}
+          height={100}
+          alt="Logo"
+          
+          />
         </Link>
       </div>
       <nav>
