@@ -39,5 +39,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Things I need to do. 
 1. Add records from TWDY, Kacey Musgraves, Phoebe Bridgers, Ratatat, Webbed Wing, Fiddlehead, WeCool?, Paramore, TBS, ETID, STD
-2. Create pages for artists
+2. Create pages for artists - DONE
 3. put site up on Vercel
+4. Incorporate Genres into Albums and Artists
+5. Create pages for genres
+6. Can you rename AlbumReviews to just Albums?
+7. Create a footer
+8. Revist style
