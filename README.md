@@ -43,6 +43,6 @@ Things I need to do.
 3. put site up on Vercel
 4. Incorporate Genres into Albums and Artists
 5. Create pages for genres
-6. Can you rename AlbumReviews to just Albums?
+6. Can you rename AlbumReviews to just Albums? Yes, but don't break things. 
 7. Create a footer
 8. Revist style

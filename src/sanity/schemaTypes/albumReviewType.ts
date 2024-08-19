@@ -3,7 +3,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const albumReviewType = defineType({
   name: 'albumReview',
-  title: 'Album Review',
+  title: 'Album',
   type: 'document',
   icon: SparklesIcon,
   fields: [
@@ -52,6 +52,13 @@ export const albumReviewType = defineType({
       type: 'datetime',
     }),
     defineField({
+      name: 'featured',
+      type: 'boolean',
+      description: "Is this one of Daniel's featured records?",
+      initialValue: false
+
+    }),
+    defineField({
         name: 'genre',
         type: 'string',
         options: {
@@ -85,11 +92,12 @@ export const albumReviewType = defineType({
       title: 'title',
       author: 'author.name',
       media: 'mainImage',
-      artist: 'artist.name'
+      artist: 'artist.name',
+      featured: 'featured'
     },
     prepare(selection) {
-      const {artist} = selection
-      return {...selection, subtitle: artist && `by ${artist}`}
+      const {artist, featured} = selection
+      return {...selection, subtitle: artist && `by ${artist}${featured ? ": Featured" : ""}`}
     },
   },
 })
