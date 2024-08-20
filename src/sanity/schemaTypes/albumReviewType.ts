@@ -60,27 +60,8 @@ export const albumReviewType = defineType({
     }),
     defineField({
         name: 'genre',
-        type: 'string',
-        options: {
-            list: [
-                {title: 'Jazz', value: 'jazz'},
-                {title: 'Post-Rock', value: 'post-rock'},
-                {title: 'Punk Rock', value: 'punk-rock'},
-                {title: 'Pop Punk', value: 'pop-punk'},
-                {title: 'Alternative Rock', value: 'alternative-rock'},
-                {title: 'Classic Rock', value: 'classic-rock'},
-                {title: 'Hip Hop', value: 'hip-hop'},
-                {title: 'Electronic', value: 'electronic'},
-                {title: 'Folk Rock', value: 'folk-rock'},
-                {title: 'Grunge', value: 'grunge'},
-                {title: 'Pop', value: 'pop'},
-                {title: 'Hardcore', value: 'hardcore'},
-                {title: 'Metal', value: 'metal'},
-                {title: 'Country', value: 'country'},
-                {title: 'Post-Punk', value: 'post-punk'},
-                {title: 'Indie Rock', value: 'indie-rock'},
-            ]
-        }
+        type: 'reference',
+        to: {type: 'genre'},
     }),
     defineField({
       name: 'body',
@@ -97,7 +78,7 @@ export const albumReviewType = defineType({
     },
     prepare(selection) {
       const {artist, featured} = selection
-      return {...selection, subtitle: artist && `by ${artist}${featured ? ": Featured" : ""}`}
+      return {...selection, subtitle: artist && `by ${artist}${featured ? ": ✳️" : ""}`}
     },
   },
 })

@@ -23,6 +23,22 @@ export const artistType = defineType({
         type: 'string',
     }),
     defineField({
+      name: 'genre',
+      type: 'array',
+      of: [defineArrayMember({type: 'reference', to: {type: 'genre'}})],
+    }),
+    defineField({
+      name: 'albums',
+      type: 'array',
+      of: [defineArrayMember({type: 'reference', to: {type: 'albumReview'}})]
+    }),
+    defineField({
+      name: 'featured',
+      type: 'boolean',
+      description: "Is this one of Daniel's featured artists?",
+      initialValue: false
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       options: {
@@ -45,11 +61,12 @@ export const artistType = defineType({
     select: {
       title: 'name',
       media: 'image',
-      origin: 'origin'
+      origin: 'origin',
+      featured: 'featured'
     },
     prepare(selection) {
-        const {origin} = selection
-        return {...selection, subtitle: origin}
+        const {origin, featured} = selection
+        return {...selection, subtitle: origin && `${origin}${featured ? ": ✳️" : ""}`}
     }
   },
 })

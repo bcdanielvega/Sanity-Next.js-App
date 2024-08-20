@@ -36,9 +36,9 @@ export const genreType = defineType({
         to:[{type: 'artist'}]
     }),
     defineField({
-        name: 'secondaryyReferenceArtist',
+        name: 'secondaryReferenceArtist',
         type: 'reference',
-        title: 'Secondaryy Reference Artist',
+        title: 'Secondary Reference Artist',
         to:[{type: 'artist'}]
     }),
   ],
