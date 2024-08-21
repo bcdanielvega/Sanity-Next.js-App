@@ -13,7 +13,9 @@ const config: Config = {
       whitesmoke: "#F7F4F3",
       denim: "#2D60B4",
       cambridgeblue: "#6AA083",
-      mintcream: "#DAE7E0"
+      mintcream: "#DAE7E0",
+      darkgreen: "#203128",
+
     },
     extend: {
       backgroundImage: {

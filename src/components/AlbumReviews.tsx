@@ -15,7 +15,7 @@ export function AlbumReviews({albumReviews}: {albumReviews: ALBUMREVIEWS_QUERYRe
 
                 <li key={albumReview._id}>
                     <a
-                        className="block p-4 hover:bg-cambridgeblue flex flex-col items-center rounded-lg"
+                        className="block p-4 hover:bg-darkgreen hover:text-mintcream flex flex-col items-center rounded-lg"
                         href={`/albumReviews/${albumReview?.slug?.current}`}
                     >
                         {albumReview.mainImage?.asset?._ref ? (

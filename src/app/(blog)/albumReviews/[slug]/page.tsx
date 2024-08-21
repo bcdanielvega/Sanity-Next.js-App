@@ -9,6 +9,7 @@ import {
 } from "../../../../../sanity.types";
 import { Review } from "@/components/Review";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export async function generateStaticParams() {
   const albumReviews = await client.fetch<ALBUMREVIEWS_QUERYResult>(
@@ -33,5 +34,7 @@ export default async function Page({ params }: { params: QueryParams }) {
   return <>
   <Header />
   <Review review={albumReview} />;
+  <Footer companyName="Milestones" />
+
   </>
 }

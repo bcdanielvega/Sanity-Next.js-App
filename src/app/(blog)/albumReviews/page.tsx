@@ -3,6 +3,7 @@ import { sanityFetch } from "@/sanity/lib/client";
 import { ALBUMREVIEWS_QUERY } from "@/sanity/lib/queries";
 import { ALBUMREVIEWS_QUERYResult } from "../../../../sanity.types";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default async function Page() {
   const albumReviews = await sanityFetch<ALBUMREVIEWS_QUERYResult>({
@@ -22,5 +23,6 @@ export default async function Page() {
     </h2>
   </div>
     <AlbumReviews albumReviews={albumReviews} />;
+    <Footer companyName="Milestones" />
   </>
 }

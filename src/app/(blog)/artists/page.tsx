@@ -6,6 +6,7 @@ import { sanityFetch } from "@/sanity/lib/client";
 import { ARTISTS_QUERY } from "@/sanity/lib/queries";
 import { ARTISTS_QUERYResult } from "../../../../sanity.types";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 export default async function Page() {
@@ -22,5 +23,7 @@ export default async function Page() {
       <h2 className="text-center uppercase"> Artists that I think you should listen to</h2>
     </div>
     <Artists artists={artists} />;
+    <Footer companyName="Milestones" />
+
   </>
 }

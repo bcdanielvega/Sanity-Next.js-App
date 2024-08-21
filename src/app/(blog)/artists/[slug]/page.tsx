@@ -7,6 +7,7 @@ import { ARTIST_QUERYResult, ARTISTS_QUERYResult } from "../../../../../sanity.t
 
 import { Artist } from "@/components/Artist"
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export async function generateStaticParams() {
     const artists = await client.fetch<ARTISTS_QUERYResult>(
@@ -32,5 +33,6 @@ export default async function Page({ params}: { params: QueryParams}) {
     return <>
         <Header />
         <Artist artist={artist} />;
+        <Footer companyName="Milestones" />
     </>
 }
