@@ -68,46 +68,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Genre = {
-  _id: string;
-  _type: "genre";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  bio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal";
-    listItem?: never;
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-  primaryReferenceArtist?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "artist";
-  };
-  secondaryyReferenceArtist?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "artist";
-  };
-};
-
 export type AlbumReview = {
   _id: string;
   _type: "albumReview";
@@ -148,7 +108,13 @@ export type AlbumReview = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   publishedAt?: string;
-  genre?: "jazz" | "post-rock" | "punk-rock" | "pop-punk" | "alternative-rock" | "classic-rock" | "hip-hop" | "electronic" | "folk-rock" | "grunge" | "pop" | "hardcore" | "metal" | "country" | "post-punk" | "indie-rock";
+  featured?: boolean;
+  genre?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "genre";
+  };
   body?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -181,6 +147,46 @@ export type AlbumReview = {
   }>;
 };
 
+export type Genre = {
+  _id: string;
+  _type: "genre";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  bio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  primaryReferenceArtist?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "artist";
+  };
+  secondaryReferenceArtist?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "artist";
+  };
+};
+
 export type Artist = {
   _id: string;
   _type: "artist";
@@ -190,6 +196,21 @@ export type Artist = {
   name?: string;
   slug?: Slug;
   origin?: string;
+  genre?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "genre";
+  }>;
+  albums?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "albumReview";
+  }>;
+  featured?: boolean;
   image?: {
     asset?: {
       _ref: string;
@@ -431,7 +452,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Genre | AlbumReview | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | AlbumReview | Genre | Artist | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: ALBUMREVIEWS_QUERY
@@ -522,7 +543,7 @@ export type ARTISTS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: ARTIST_QUERY
-// Query: *[_type == "artist" && slug.current == $slug][0] {name, bio, image}
+// Query: *[_type == "artist" && slug.current == $slug][0] {name, bio, image, origin, genre[]->{name}}
 export type ARTIST_QUERYResult = {
   name: string | null;
   bio: Array<{
@@ -554,5 +575,61 @@ export type ARTIST_QUERYResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  origin: string | null;
+  genre: Array<{
+    name: string | null;
+  }> | null;
 } | null;
+// Variable: FEATURED_ALBUMREVIEWS_QUERY
+// Query: *[_type == "albumReview" && defined(slug.current) && featured] | order(_id desc) {  _id, title, slug, mainImage, artist->{name}}
+export type FEATURED_ALBUMREVIEWS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  artist: {
+    name: string | null;
+  } | null;
+}>;
+// Variable: FEATURED_ARTISTS_QUERY
+// Query: *[_type == "artist" && featured] {_id, name, slug, image}
+export type FEATURED_ARTISTS_QUERYResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
 
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    "*[_type == \"albumReview\" && defined(slug.current)] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": ALBUMREVIEWS_QUERYResult;
+    "*[_type == \"albumReview\" && slug.current == $slug][0]{\n  title, body, mainImage\n}": ALBUMREVIEW_QUERYResult;
+    "*[_type == \"artist\"] {_id, name, slug, image}": ARTISTS_QUERYResult;
+    "*[_type == \"artist\" && slug.current == $slug][0] {name, bio, image, origin, genre[]->{name}}": ARTIST_QUERYResult;
+    "*[_type == \"albumReview\" && defined(slug.current) && featured] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": FEATURED_ALBUMREVIEWS_QUERYResult;
+    "*[_type == \"artist\" && featured] {_id, name, slug, image}": FEATURED_ARTISTS_QUERYResult;
+  }
+}
