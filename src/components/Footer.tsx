@@ -12,7 +12,7 @@ const Footer: React.FC<FooterProps> = ({
   year = new Date().getFullYear(),
 }) => {
   return (
-    <footer className="bg-darkgreen text-mintcream py-6 quicksand">
+    <footer className="bg-darkgreen text-mintcream py-6 arimo">
       <div className="container mx-auto flex flex-row justify-between">
         <div>
             <ul className="flex flex-col">

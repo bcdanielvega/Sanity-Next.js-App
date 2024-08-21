@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Header: React.FC = () => {
   return (
-    <header className={`quicksand ${styles.header}`}>
+    <header className={`arimo ${styles.header}`}>
       <div className={styles.logo}>
         <Link href="/">
           <Image 

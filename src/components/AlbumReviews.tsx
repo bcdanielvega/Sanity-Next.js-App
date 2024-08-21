@@ -27,8 +27,8 @@ export function AlbumReviews({albumReviews}: {albumReviews: ALBUMREVIEWS_QUERYRe
                             alt={albumReview.title || ""}
                         />
                         ) : null }
-                        <div className="quicksand text-center pt-3">{albumReview?.title}</div>
-                        <div className="quicksand text-center">{albumReview?.artist?.name}</div>
+                        <div className="arimo text-center pt-3">{albumReview?.title}</div>
+                        <div className="arimo text-center">{albumReview?.artist?.name}</div>
                     </a>
                 </li>
             ))}

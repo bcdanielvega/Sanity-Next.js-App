@@ -27,7 +27,7 @@ export function Artists({artists}: {artists: ARTISTS_QUERYResult}) {
                             alt={artist.name || ""}
                         />
                         ) : null }
-                        <div className="quicksand text-center pt-3">{artist?.name}</div>
+                        <div className="arimo text-center pt-3">{artist?.name}</div>
                     </a>
                 </li>
             ))}

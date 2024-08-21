@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
+import { Arimo } from "next/font/google";
 import "./globals.css";
 
 const quicksand = Quicksand({ subsets: ["latin"], variable: '--font-quicksand' })
+const arimo = Arimo({ subsets: ["latin"], variable: '--font-arimo'})
 
 export const metadata: Metadata = {
   title: "Albums for Miles",
@@ -16,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={quicksand.variable}>{children}</body>
+      <body className={arimo.variable}>{children}</body>
     </html>
   );
 }
