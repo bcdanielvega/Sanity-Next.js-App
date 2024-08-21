@@ -15,7 +15,7 @@ export function Artists({artists}: {artists: ARTISTS_QUERYResult}) {
 
                 <li key={artist._id}>
                     <a
-                        className="block p-4 hover:bg-cambridgeblue flex flex-col items-center rounded-lg"
+                        className="block p-4 hover:bg-darkgreen hover:text-mintcream flex flex-col items-center rounded-lg"
                         href={`/artists/${artist?.slug?.current}`}
                     >
                         {artist.image?.asset?._ref ? (
