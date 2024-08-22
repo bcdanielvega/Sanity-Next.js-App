@@ -1,17 +1,4 @@
 import type {StructureResolver} from 'sanity/structure';
-import { useEffect, useState } from 'react';
-import { useClient } from 'sanity';
-
-const documentCount = async (schemaType: string) => {
-  const client = useClient();
-  const count = await client. fetch<number>(`count(*[_type == schemaType])`, {
-    schemaType,
-  });
-
-  return count;
-}
-
-
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
