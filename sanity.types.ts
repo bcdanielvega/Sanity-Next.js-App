@@ -478,7 +478,7 @@ export type ALBUMREVIEWS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: ALBUMREVIEW_QUERY
-// Query: *[_type == "albumReview" && slug.current == $slug][0]{  title, body, mainImage}
+// Query: *[_type == "albumReview" && slug.current == $slug][0]{  title, body, mainImage, artist->{name, slug}, genre->{name, slug}}
 export type ALBUMREVIEW_QUERYResult = {
   title: string | null;
   body: Array<{
@@ -522,6 +522,14 @@ export type ALBUMREVIEW_QUERYResult = {
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
+  } | null;
+  artist: {
+    name: string | null;
+    slug: Slug | null;
+  } | null;
+  genre: {
+    name: string | null;
+    slug: Slug | null;
   } | null;
 } | null;
 // Variable: ARTISTS_QUERY
@@ -626,7 +634,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"albumReview\" && defined(slug.current)] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": ALBUMREVIEWS_QUERYResult;
-    "*[_type == \"albumReview\" && slug.current == $slug][0]{\n  title, body, mainImage\n}": ALBUMREVIEW_QUERYResult;
+    "*[_type == \"albumReview\" && slug.current == $slug][0]{\n  title, body, mainImage, artist->{name, slug}, genre->{name, slug}\n}": ALBUMREVIEW_QUERYResult;
     "*[_type == \"artist\"] {_id, name, slug, image}": ARTISTS_QUERYResult;
     "*[_type == \"artist\" && slug.current == $slug][0] {name, bio, image, origin, genre[]->{name}}": ARTIST_QUERYResult;
     "*[_type == \"albumReview\" && defined(slug.current) && featured] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": FEATURED_ALBUMREVIEWS_QUERYResult;

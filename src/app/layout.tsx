@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import { Arimo } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local';
 
 const quicksand = Quicksand({ subsets: ["latin"], variable: '--font-quicksand' })
 const arimo = Arimo({ subsets: ["latin"], variable: '--font-arimo'})
+
+const agrandir = localFont({ src: '../../public/fonts/Agrandir-Regular.otf', variable: '--font-agrandir'});
+
+
 
 export const metadata: Metadata = {
   title: "Albums for Miles",
@@ -18,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={arimo.variable}>{children}</body>
+      <body className={agrandir.variable}>{children}</body>
     </html>
   );
 }

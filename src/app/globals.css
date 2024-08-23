@@ -13,6 +13,20 @@
   font-family: var(--font-quicksand);
 }
 
+.agrandir {
+  font-family: var(--font-agrandir);
+}
+
 .arimo {
   font-family: var(--font-arimo);
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+h2,h3 {
+  font-size: 2rem;
+  font-weight: 600;
 }

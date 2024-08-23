@@ -23,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
                 <Link href="/albumReviews">
-                Contact
+                Albums
                 </Link>
             </li>
             </ul>

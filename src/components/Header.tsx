@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Header: React.FC = () => {
   return (
-    <header className={`arimo ${styles.header}`}>
+    <header className={`${styles.header} font-agrandir`}>
       <div className={styles.logo}>
         <Link href="/">
           <Image 
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <nav>
-        <ul className={styles.navList}>
+        <ul className={`${styles.navList} uppercase`}>
           <li>
             <Link href="/">
               Home
@@ -33,8 +33,8 @@ const Header: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link href="/contact">
-              Contact
+            <Link href="/about">
+              About
             </Link>
           </li>
         </ul>
