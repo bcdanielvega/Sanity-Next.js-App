@@ -26,11 +26,16 @@
   
   .navList li a {
     color: white;
-    text-decoration: none;
-    font-size: 1rem;
+    text-decoration: underline;
+    text-decoration-color: #203128;
+    font-size: 1.25rem;
+    letter-spacing: .15rem;
+    transition: all 0.5s ease-in-out;
+    text-underline-offset: 4px;
+
   }
   
   .navList li a:hover {
-    text-decoration: underline;
+    text-decoration-color: #ffffff;
   }
   

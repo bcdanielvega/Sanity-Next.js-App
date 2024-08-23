@@ -17,12 +17,16 @@
   font-family: var(--font-agrandir);
 }
 
+.bold {
+  font-family: var(--font-bold);
+}
+
 .arimo {
   font-family: var(--font-arimo);
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 

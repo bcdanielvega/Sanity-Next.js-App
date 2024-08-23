@@ -16,9 +16,9 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <nav>
-        <ul className={`${styles.navList} uppercase`}>
+        <ul className={`${styles.navList} uppercase font-agrandir text-2xl`}>
           <li>
-            <Link href="/">
+            <Link href="/" className='font-agrandir'>
               Home
             </Link>
           </li>

@@ -25,7 +25,7 @@ const config: Config = {
       },
       fontFamily: {
         custom: ['var(--font-inter)'],
-        agrandir: ['var(--font-agrandir)']
+        agrandir: ['var(--font-agrandir)'],
       }
 
     },

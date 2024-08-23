@@ -8,6 +8,9 @@ const quicksand = Quicksand({ subsets: ["latin"], variable: '--font-quicksand' }
 const arimo = Arimo({ subsets: ["latin"], variable: '--font-arimo'})
 
 const agrandir = localFont({ src: '../../public/fonts/Agrandir-Regular.otf', variable: '--font-agrandir'});
+const light = localFont({ src: '../../public/fonts/Agrandir-GrandLight.otf', variable: '--font-light'});
+const grand = localFont({ src: '../../public/fonts/Agrandir-TextBold.otf', variable: '--font-bold'});
+
 
 
 
@@ -23,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={agrandir.variable}>{children}</body>
+      <body className={`${agrandir.variable}` }>{children}</body>
     </html>
   );
 }
