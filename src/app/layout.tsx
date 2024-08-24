@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
-import { Arimo } from "next/font/google";
 import "./globals.css";
 import localFont from 'next/font/local';
 
-const quicksand = Quicksand({ subsets: ["latin"], variable: '--font-quicksand' })
-const arimo = Arimo({ subsets: ["latin"], variable: '--font-arimo'})
-
 const agrandir = localFont({ src: '../../public/fonts/Agrandir-Regular.otf', variable: '--font-agrandir'});
-const light = localFont({ src: '../../public/fonts/Agrandir-GrandLight.otf', variable: '--font-light'});
-const grand = localFont({ src: '../../public/fonts/Agrandir-TextBold.otf', variable: '--font-bold'});
 
 
 
