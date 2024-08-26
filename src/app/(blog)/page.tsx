@@ -23,6 +23,10 @@ export default async function Page() {
     query: FEATURED_ALBUMREVIEWS_QUERY,
   });
 
+  const totalAlbums = await sanityFetch<ALBUMREVIEWS_QUERYResult>({
+    query: ALBUMREVIEWS_QUERY,
+  });
+
   const featuredartists = await sanityFetch<FEATURED_ARTISTS_QUERYResult>({
     query: FEATURED_ARTISTS_QUERY,
   });
@@ -64,22 +68,29 @@ export default async function Page() {
             >
               Albums
             </Link>{" "}
-            and <Link href='/artists' className="font-bold uppercase underline underline-offset-2 decoration-mintcream transition-all duration-1000 hover:decoration-darkgreen">Artists</Link> to see the full collection, or start here with some
-            Daniel's favorites.
+            and{" "}
+            <Link
+              href="/artists"
+              className="font-bold uppercase underline underline-offset-2 decoration-mintcream transition-all duration-1000 hover:decoration-darkgreen"
+            >
+              Artists
+            </Link>{" "}
+            to see the full collection, or start here with some Daniel's
+            favorites.
           </div>
-
-          {/* <div className="p-5">
-            <Image
-              className="rounded-lg"
-              src={"/mohawk-daniel-drums.jpg"}
-              width={500}
-              height={300}
-              alt="Daniel playing drums"
-            />
-          </div> */}
         </div>
       </div>
-      <div className="container mx-auto grid font-normal text-2xl mb-4 font-agrandir justify-center">
+      <div className="container text-justify text-2xl font-agrandir mx-auto flex justify-center mb-8 mt-8 p-16 w-fit border-solid border-darkgreen rounded-2xl border-2">
+        <div className="text-xl flex flex-col justify-center">
+          <p>I'm always adding new records to the collection.</p>
+          <p>Currently, this is where we are at.</p>
+        </div>
+        <div className="mx-5 flex flex-col items-center">
+          <h3 className="text-9xl leading-hang-lose ">{totalAlbums.length}</h3>
+          <p>albums</p>
+        </div>
+      </div>
+      <div className="container mx-auto grid font-normal text-2xl mb-4 font-agrandir justify-center mt-20">
         <h3 className="uppercase ">These are Daniel's top records</h3>
       </div>
       <AlbumReviews albumReviews={featuredAlbums} />;
