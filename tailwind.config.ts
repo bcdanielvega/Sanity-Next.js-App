@@ -8,13 +8,13 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      desertsand: "#DAB295",
-      linen: "#F4E9E1",
-      whitesmoke: "#F7F4F3",
-      denim: "#2D60B4",
-      cambridgeblue: "#6AA083",
-      mintcream: "#DAE7E0",
-      darkgreen: "#203128",
+        desertsand: "#DAB295",
+        linen: "#F4E9E1",
+        whitesmoke: "#F7F4F3",
+        denim: "#2D60B4",
+        cambridgeblue: "#6AA083",
+        mintcream: "#DAE7E0",
+        darkgreen: "#203128",
 
     },
     extend: {

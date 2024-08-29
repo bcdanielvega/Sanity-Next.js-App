@@ -40,11 +40,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Things I need to do. 
 1. Add records from Kacey Musgraves, Phoebe Bridgers, Webbed Wing, Fiddlehead, Paramore, TBS, ETID, STD, Radiohead, Death Cab, 
 2. Create pages for artists - DONE
-3. put site up on Vercel
+3. put site up on Vercel - DONE
 4. Incorporate Genres into Albums and Artists
 5. Create pages for genres
 6. Can you rename AlbumReviews to just Albums? Yes, but don't break things. 
-7. Create a footer
+7. Create a footer - DONE
 8. Revist style 🏆 
 
-why do things break?
+
+
+npx sanity@latest schema extract       
+npx sanity@latest typegen generate     

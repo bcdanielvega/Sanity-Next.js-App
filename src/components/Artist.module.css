@@ -1,0 +1,22 @@
+.genreList {
+
+}
+
+.genreList li:first-child {
+padding-left: 0;
+}
+
+.genreList li:not(:first-child)::before {
+    content: '⚡';
+    padding-right: 0.25rem;
+}
+
+.returnLinks {
+    text-decoration-color: #DAE7E0;
+    transition: all 0.5s ease-in-out;
+    text-underline-offset: 4px;
+}
+
+.returnLinks:hover {
+    text-decoration-color: black;
+}

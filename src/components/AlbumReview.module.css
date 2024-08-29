@@ -1,0 +1,21 @@
+.artistLink{
+    text-decoration: unset;
+    text-decoration: underline;
+    text-decoration-color: #DAE7E0;
+    transition: all 0.5s ease-in-out;
+    text-underline-offset: 4px;
+}
+
+.artistLink:hover {
+    text-decoration-color: black;
+}
+
+.returnLinks {
+    text-decoration-color: #DAE7E0;
+    transition: all 0.5s ease-in-out;
+    text-underline-offset: 4px;
+}
+
+.returnLinks:hover {
+    text-decoration-color: black;
+}
