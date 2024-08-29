@@ -59,9 +59,6 @@ export function Artist({ artist }: { artist: ARTIST_QUERYResult }) {
                   <div className="font-agrandir text-center pt-3">
                     {album?.title}
                   </div>
-                  <div className="font-agrandir text-center">
-                    {album?.artist?.name}
-                  </div>
                 </a>
               </li>
             ))}
