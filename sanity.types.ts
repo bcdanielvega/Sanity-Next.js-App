@@ -551,7 +551,7 @@ export type ARTISTS_QUERYResult = Array<{
   } | null;
 }>;
 // Variable: ARTIST_QUERY
-// Query: *[_type == "artist" && slug.current == $slug][0] {name, slug, bio, image, origin, genre[]->{name, slug}, albums[]->{_id, title, mainImage, slug}}
+// Query: *[_type == "artist" && slug.current == $slug][0] {name, slug, bio, image, origin, genre[]->{_id, name, slug}, albums[]->{_id, title, mainImage, slug}}
 export type ARTIST_QUERYResult = {
   name: string | null;
   slug: Slug | null;
@@ -586,6 +586,7 @@ export type ARTIST_QUERYResult = {
   } | null;
   origin: string | null;
   genre: Array<{
+    _id: string;
     name: string | null;
     slug: Slug | null;
   }> | null;
@@ -655,7 +656,7 @@ declare module "@sanity/client" {
     "*[_type == \"albumReview\" && defined(slug.current)] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": ALBUMREVIEWS_QUERYResult;
     "*[_type == \"albumReview\" && slug.current == $slug][0]{\n  title, body, mainImage, artist->{name, slug}, genre->{name, slug}\n}": ALBUMREVIEW_QUERYResult;
     "*[_type == \"artist\"] {_id, name, slug, image}": ARTISTS_QUERYResult;
-    "*[_type == \"artist\" && slug.current == $slug][0] {name, slug, bio, image, origin, genre[]->{name, slug}, albums[]->{_id, title, mainImage, slug}}": ARTIST_QUERYResult;
+    "*[_type == \"artist\" && slug.current == $slug][0] {name, slug, bio, image, origin, genre[]->{_id, name, slug}, albums[]->{_id, title, mainImage, slug}}": ARTIST_QUERYResult;
     "*[_type == \"albumReview\" && defined(slug.current) && featured] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": FEATURED_ALBUMREVIEWS_QUERYResult;
     "*[_type == \"artist\" && featured] {_id, name, slug, image}": FEATURED_ARTISTS_QUERYResult;
   }

@@ -19,7 +19,7 @@ export function Artist({ artist }: { artist: ARTIST_QUERYResult }) {
         {genre ? (
           <ul className={`list-none flex pl-0 ${styles.genreList} mb-0`}>
             {genre.map((genre) => (
-              <li>{genre.name}</li>
+              <li key={genre._id}>{genre.name}</li>
             ))}
           </ul>
         ) : null}
