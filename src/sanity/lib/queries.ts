@@ -20,3 +20,5 @@ export const FEATURED_ARTISTS_QUERY = groq`*[_type == "artist" && featured] {_id
 
 // Get Jazz Records
 
+export const JAZZ_ALBUMS_QUERY = groq`*[_type == "albumReview" && genre._ref in *[_type == 'genre' && name=="Jazz"]._id]{_id, title, slug, mainImage, genre->{name}, artist->{name}}`;
+

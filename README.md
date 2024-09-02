@@ -47,6 +47,8 @@ Things I need to do.
 7. Create a footer - DONE
 8. Revist style 🏆 
 
+9. Add to search the ability to clear, search by artist, maybe look at a dropdown list of titles something like that
+
 
 
 npx sanity@latest schema extract       

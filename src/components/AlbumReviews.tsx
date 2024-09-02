@@ -7,11 +7,20 @@ import React, { useState, useEffect } from "react";
 
 export function AlbumReviews({
   albumReviews,
+  showSearch,
+  limit,
+  amount,
 }: {
   albumReviews: ALBUMREVIEWS_QUERYResult;
+  showSearch: boolean;
+  limit?: boolean;
+  amount?: number;
 }) {
   // Randomize the order for the albums
   albumReviews = albumReviews.sort((a, b) => 0.5 - Math.random());
+  if(limit && amount !== null) {
+    albumReviews.splice(amount? amount : 0);
+  }
 
   // How would I add state to this?
 
@@ -23,7 +32,7 @@ export function AlbumReviews({
     setIsMounted(true);
   }, []);
 
-  if( !isMounted ) {
+  if (!isMounted) {
     return null;
   }
 
@@ -38,15 +47,17 @@ export function AlbumReviews({
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex justify-center p-8 font-agrandir">
-          <input
-            type="text"
-            value={query}
-            onChange={handleInputChange}
-            placeholder="Search..."
-            className="border border-2 p-2 rounded w-2/5 font-agrandir"
-          />
-        </div>
+        {showSearch ? (
+          <div className="flex justify-center p-8 font-agrandir">
+            <input
+              type="text"
+              value={query}
+              onChange={handleInputChange}
+              placeholder="Search..."
+              className="border border-2 p-2 rounded w-2/5 font-agrandir"
+            />
+          </div>
+        ) : null}
         <ul className="container mx-auto grid grid-cols-4 divide-blue-100">
           {filteredItems.map((albumReview) => (
             <li key={albumReview._id}>

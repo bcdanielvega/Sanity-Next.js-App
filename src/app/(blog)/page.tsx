@@ -3,14 +3,12 @@ import { Artists } from "@/components/Artists";
 import { sanityFetch } from "@/sanity/lib/client";
 import { ALBUMREVIEWS_QUERY } from "@/sanity/lib/queries";
 import { ALBUMREVIEWS_QUERYResult } from "../../../sanity.types";
-import { ARTISTS_QUERY } from "@/sanity/lib/queries";
-import { ARTISTS_QUERYResult } from "../../../sanity.types";
-
 import { FEATURED_ALBUMREVIEWS_QUERY } from "@/sanity/lib/queries";
 import { FEATURED_ALBUMREVIEWS_QUERYResult } from "../../../sanity.types";
-
 import { FEATURED_ARTISTS_QUERY } from "@/sanity/lib/queries";
 import { FEATURED_ARTISTS_QUERYResult } from "../../../sanity.types";
+import { JAZZ_ALBUMS_QUERY } from "@/sanity/lib/queries";
+import { JAZZ_ALBUMS_QUERYResult } from "../../../sanity.types";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -29,6 +27,10 @@ export default async function Page() {
 
   const featuredartists = await sanityFetch<FEATURED_ARTISTS_QUERYResult>({
     query: FEATURED_ARTISTS_QUERY,
+  });
+
+  const jazzAlbums = await sanityFetch<JAZZ_ALBUMS_QUERYResult>({
+    query: JAZZ_ALBUMS_QUERY,
   });
 
   return (
@@ -93,13 +95,19 @@ export default async function Page() {
       <div className="container mx-auto grid font-normal text-2xl mb-4 font-agrandir justify-center mt-20">
         <h3 className="uppercase ">These are Daniel's top records</h3>
       </div>
-      <AlbumReviews albumReviews={featuredAlbums} />;
+      <AlbumReviews albumReviews={featuredAlbums} showSearch={false}/>;
       <div className="container mx-auto prose prose-lg p-4 flex items-center justify-center --font-agrandir bg-mintcream">
         <h2 className="text-center uppercase font-agrandir">
           These are Daniel's favorite artists{" "}
         </h2>
       </div>
       <Artists artists={featuredartists} />;
+      <div className="container mx-auto prose prose-lg p-4 flex items-center justify-center --font-agrandir bg-mintcream">
+        <h2 className="text-center uppercase font-agrandir">
+          Listen to this Jazz Records{" "}
+        </h2>
+      </div>
+      <AlbumReviews albumReviews={jazzAlbums} showSearch={false} limit={true} amount={8}/>;
       <Footer companyName="Milestones" />
     </>
   );

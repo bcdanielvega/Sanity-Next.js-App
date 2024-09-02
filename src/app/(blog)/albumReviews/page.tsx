@@ -22,7 +22,7 @@ export default async function Page() {
       Albums That I Think You Should Listen To
     </h2>
   </div>
-    <AlbumReviews albumReviews={albumReviews} />;
+    <AlbumReviews albumReviews={albumReviews} showSearch={true}/>;
     <Footer companyName="Milestones" />
   </>
 }

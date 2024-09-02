@@ -648,6 +648,31 @@ export type FEATURED_ARTISTS_QUERYResult = Array<{
     _type: "image";
   } | null;
 }>;
+// Variable: JAZZ_ALBUMS_QUERY
+// Query: *[_type == "albumReview" && genre._ref in *[_type == 'genre' && name=="Jazz"]._id]{_id, title, slug, mainImage, genre->{name}, artist->{name}}
+export type JAZZ_ALBUMS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  genre: {
+    name: string | null;
+  } | null;
+  artist: {
+    name: string | null;
+  } | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -659,5 +684,6 @@ declare module "@sanity/client" {
     "*[_type == \"artist\" && slug.current == $slug][0] {name, slug, bio, image, origin, genre[]->{_id, name, slug}, albums[]->{_id, title, mainImage, slug}}": ARTIST_QUERYResult;
     "*[_type == \"albumReview\" && defined(slug.current) && featured] | order(_id desc) {\n  _id, title, slug, mainImage, artist->{name}\n}": FEATURED_ALBUMREVIEWS_QUERYResult;
     "*[_type == \"artist\" && featured] {_id, name, slug, image}": FEATURED_ARTISTS_QUERYResult;
+    "*[_type == \"albumReview\" && genre._ref in *[_type == 'genre' && name==\"Jazz\"]._id]{_id, title, slug, mainImage, genre->{name}, artist->{name}}": JAZZ_ALBUMS_QUERYResult;
   }
 }
